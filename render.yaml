@@ -1,0 +1,32 @@
+# Render Blueprint for the backend API.
+# Deploy: push to GitHub, then in Render → New → Blueprint, select this repo.
+# Set the secret env vars (MONGO_URI, JWT_SECRET, CLIENT_ORIGIN, ADMIN_*) in the
+# Render dashboard — they are intentionally NOT committed here.
+services:
+  - type: web
+    name: restaurantbook-api
+    runtime: node
+    rootDir: server
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: CLIENT_ORIGIN
+        sync: false
+      - key: ADMIN_NAME
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
