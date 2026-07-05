@@ -76,18 +76,23 @@ restaurantbook/
 
 ## Live Demo
 
-| Service   | URL                                             |
-| --------- | ----------------------------------------------- |
-| Frontend  | _`<add your Vercel/Netlify URL here>`_          |
-| Backend   | _`<add your Render URL here>`/api/health_       |
+| Service        | URL                                              |
+| -------------- | ------------------------------------------------ |
+| **Frontend**   | https://restaurantbook-khjc.vercel.app           |
+| Backend API    | https://restaurantbook.onrender.com/api          |
+| Backend health | https://restaurantbook.onrender.com/api/health   |
 
-> Deployment steps are in the [Deployment](#deployment) section. Update these links
-> once deployed.
+> **Note:** the backend is hosted on Render's free tier, which sleeps after ~15 minutes
+> of inactivity. The **first** request after idle may take ~30–50 seconds to wake the
+> server (subsequent requests are fast). If the first login seems to hang, give it a
+> moment and retry.
 
-**Demo credentials (after seeding):**
+**Demo credentials:**
 
 - **Admin:** `admin@restaurantbook.com` / `Admin@123`
-- **Customer:** register a fresh account from the UI.
+- **Customer:** register a fresh account from the login page.
+
+Deployment steps are documented in the [Deployment](#deployment) section.
 
 ---
 
