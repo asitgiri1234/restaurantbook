@@ -11,13 +11,17 @@ export function createApp() {
   const app = express();
 
   // CORS — allow the configured client origin(s).
+  // Trailing slashes are stripped so "https://foo.app/" matches "https://foo.app".
+  // A "*" entry (or no value at all) allows any origin, reflecting it back so that
+  // credentialed requests still work.
   const origins = (process.env.CLIENT_ORIGIN || '')
     .split(',')
-    .map((o) => o.trim())
+    .map((o) => o.trim().replace(/\/+$/, ''))
     .filter(Boolean);
+  const allowAll = origins.length === 0 || origins.includes('*');
   app.use(
     cors({
-      origin: origins.length ? origins : true,
+      origin: allowAll ? true : origins,
       credentials: true,
     })
   );
